@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WIREFRAME</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fondamento:ital,wght@0,400;0,700;1,400&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Uncial+Antiqua&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="light-overlay"></div>
+    <div class="parchment-tint"></div>
+
+    <!-- Sidebar toggle button -->
+    <button id="menu-btn" class="menu-btn">☰</button>
+    <button id="home-btn" class="home-btn">🏠</button>
+
+    <!-- sidebar-->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+
+            <!-- Theme selector panel -->
+            <div class="theme-selector">
+                <div class="theme-selector-header">
+                    <h3>Theme</h3>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="modeToggle" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="theme-list">
+                    <div class="theme-item" data-theme="default">
+                        <div class="theme-icon theme-default"></div>
+                        <div class="theme-text">
+                            <h4>Default</h4>
+                            <p>DungeonScribe’s original palette — classic and clean.</p>
+                        </div>
+                    </div>
+
+                    <div class="theme-item" data-theme="velvet">
+                        <div class="theme-icon theme-velvet"></div>
+                        <div class="theme-text">
+                            <h4>Velvet</h4>
+                            <p>Dark crimson velvet and ember glow.</p>
+                        </div>
+                    </div>
+
+                    <div class="theme-item" data-theme="gold">
+                        <div class="theme-icon theme-gold"></div>
+                        <div class="theme-text">
+                            <h4>Gilded Sun</h4>
+                            <p>Warm parchment gold, bright and regal.</p>
+                        </div>
+                    </div>
+
+                    <div class="theme-item" data-theme="evergreen">
+                        <div class="theme-icon theme-evergreen"></div>
+                        <div class="theme-text">
+                            <h4>Evergreen</h4>
+                            <p>Forest greens and deep woodland shade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">How to Use</a></li>
+                <li><a href="#" class="exit-link">Exit Game</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Transcription Settings -->
+    <div class="transcription-panel">
+        <div class="status-indicator"></div>
+        <button id="play-btn" class="transcription-btn play">▶</button>
+        <button id="upload-btn" class="transcription-btn upload">:P</button>
+    </div>
+
+
+
+
+
+    <header class="shell">
+        <nav class="nav">
+            <a class="brand" href="#">DungeonScribe 📜</a>
+            <ul class="links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Inventory</a></li>
+                <li><a href="#">Journal</a></li>
+                <li><a href="#">Quests</a></li>
+                <li><a href="#">Characters</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="layout">
+        <div class="panel left"></div>
+        <div class="panel middle"></div>
+        <div class="panel right">
+            <div class="subpanel top"></div>
+            <div class="subpanel bottom"></div>
+        </div>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
