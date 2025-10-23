@@ -54,13 +54,15 @@ if (menuBtn && sidebar) {
 }
 
 
-// (Optional) Home button placeholder action
 if (homeBtn) {
     homeBtn.addEventListener('click', () => {
-        // Implement navigation if needed
-        // e.g., location.href = '/';
-    });
+        homeBtn.classList.remove('magic')
+        void homeBtn.offsetWidth
+        homeBtn.classList.add('magic')
+        // navigation happens automatically through href
+    })
 }
+
 
 
 /* ---------------------------------
@@ -107,7 +109,7 @@ if (uploadBtn) {
 ----------------------------------*/
 const themes = {
     default: { font: "'Fondamento', serif" },
-    velvet: { font: "'Fondamento', serif" },
+    velvet: { font: "'Cormorant Garamond', serif" },
     gold: { font: "'Cinzel Decorative', serif" },
     evergreen: { font: "'Uncial Antiqua', serif" }
 };
@@ -174,3 +176,36 @@ if (modeToggle) {
         applyMode(e.target.checked ? 'light' : 'dark');
     });
 }
+
+
+/* Page transition: fade to campaigns */
+(function () {
+    document.body.classList.add('page-enter')
+
+    const links = document.querySelectorAll('a[data-transition="fade"]')
+    if (!links.length) return
+
+    links.forEach(a => {
+        a.addEventListener('click', e => {
+            const href = a.getAttribute('href')
+            if (!href) return
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+            if (document.startViewTransition) {
+                e.preventDefault()
+                document.startViewTransition(() => { location.href = href })
+                return
+            }
+
+            e.preventDefault()
+            const fader = document.createElement('div')
+            fader.className = 'page-fader'
+            document.body.appendChild(fader)
+            requestAnimationFrame(() => {
+                document.body.classList.add('leaving')
+                fader.addEventListener('transitionend', () => { location.href = href }, { once: true })
+            })
+        })
+    })
+})()

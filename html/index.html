@@ -4,20 +4,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DungeonScribe</title>
+    <title>DungeonScribe - Welcome!</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fondamento:ital,wght@0,400;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fondamento:wght@400;700&display=swap">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Uncial+Antiqua&display=swap"
         rel="stylesheet">
-
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=MedievalSharp&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
 <body>
@@ -25,16 +23,17 @@
     <div class="light-overlay"></div>
     <div class="parchment-tint"></div>
 
-    <div id="navbar-mount"></div>
+    <!-- Sidebar mount -->
+    <button id="menu-btn" class="menu-btn">☰</button>
     <div id="sidebar-mount"></div>
-    <div id="transcription-mount"></div>
 
-    <main class="layout">
-        <div class="panel left"></div>
-        <div class="panel middle"></div>
-        <div class="panel right">
-            <div class="subpanel top"></div>
-            <div class="subpanel bottom"></div>
+    <main class="landing">
+        <h1 class="landing-title">🏰 DungeonScribe 📜</h1>
+        <p class="landing-subtitle">Where stories are written by hand — and forged in imagination.</p>
+        <div class="landing-buttons">
+            <a href="/html/campaigns.html" class="btn solid" data-transition="fade">Enter the Realm</a>
+
+            <a href="#" class="btn ghost">Learn More</a>
         </div>
     </main>
 
@@ -46,18 +45,12 @@
         }
 
         (async () => {
-            await Promise.all([
-                mount('navbar-mount', '../shared/nav.html'),
-                mount('sidebar-mount', '../shared/sidebar.html'),
-                mount('transcription-mount', '../shared/transcription.html')
-            ]);
+            await mount('sidebar-mount', '../shared/sidebar-landing.html');
             const s = document.createElement('script');
             s.src = '../js/script.js';
-            s.defer = true;
             document.body.appendChild(s);
         })();
     </script>
-
 </body>
 
 </html>

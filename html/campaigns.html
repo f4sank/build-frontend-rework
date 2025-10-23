@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DungeonScribe — Campaigns</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fondamento:wght@400;700&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Uncial+Antiqua&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="page-campaigns">
+    <!-- Background layers -->
+    <div class="bg"></div>
+    <div class="light-overlay"></div>
+    <div class="parchment-tint"></div>
+
+    <!-- Sidebar (we use the full one here) -->
+    <button id="menu-btn" class="menu-btn">☰</button>
+    <a id="home-btn" href="/html/index.html" class="home-btn">🏠</a>
+    <div id="sidebar-mount"></div>
+
+    <main class="campaigns">
+        <h1 class="campaigns-title">Choose Your Campaign</h1>
+
+        <div class="carousel-hint">Scroll ⇠ / ⇢ &nbsp;•&nbsp; drag with mouse or trackpad</div>
+
+        <section class="campaigns-carousel" tabindex="0">
+            <!-- Card 1 -->
+            <article class="campaign-card">
+                <div class="card-media">
+                    <img src="../assets/campaigns/forest.jpg" alt="Whispers of the Grove">
+                    <span class="shine"></span>
+                </div>
+                <div class="card-info">
+                    <h2>Whispers of the Grove</h2>
+                    <p>A tale of druids, spirits, and the fading light.</p>
+                    <a class="btn solid" href="main.html">Enter</a>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="campaign-card">
+                <div class="card-media">
+                    <img src="../assets/campaigns/desert.jpg" alt="Sands of the Sunken Crown">
+                    <span class="shine"></span>
+                </div>
+                <div class="card-info">
+                    <h2>Sands of the Sunken Crown</h2>
+                    <p>Unearth an empire lost beneath shifting dunes.</p>
+                    <a class="btn solid" href="main.html">Enter</a>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="campaign-card">
+                <div class="card-media">
+                    <img src="../assets/campaigns/mountains.jpg" alt="Echoes in the Halls">
+                    <span class="shine"></span>
+                </div>
+                <div class="card-info">
+                    <h2>Echoes in the Halls</h2>
+                    <p>Dwarven halls awaken… and something else with them.</p>
+                    <a class="btn solid" href="main.html">Enter</a>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="campaign-card">
+                <div class="card-media">
+                    <img src="../assets/campaigns/coast.jpg" alt="Tideglass Covenant">
+                    <span class="shine"></span>
+                </div>
+                <div class="card-info">
+                    <h2>Tideglass Covenant</h2>
+                    <p>Stormbound oaths on a coast of broken lighthouses.</p>
+                    <a class="btn solid" href="main.html">Enter</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        async function mount(id, path) {
+            const host = document.getElementById(id);
+            const res = await fetch(path, { cache: 'no-store' });
+            host.innerHTML = await res.text();
+        }
+
+        (async () => {
+            await mount('sidebar-mount', '../shared/sidebar.html');
+
+            const s = document.createElement('script');
+            s.src = '../js/script.js';
+            document.body.appendChild(s);
+
+            const track = document.querySelector('.campaigns-carousel');
+            if (!track) return;
+
+            // Arrow keys
+            track.addEventListener('keydown', (e) => {
+                const step = 340;
+                if (e.key === 'ArrowRight') track.scrollBy({ left: step, behavior: 'smooth' });
+                if (e.key === 'ArrowLeft') track.scrollBy({ left: -step, behavior: 'smooth' });
+            });
+
+            // Softer Apple Music–style snap
+            let scrollTimer;
+            const SNAP_DELAY = 160;      // a bit longer
+            const SNAP_THRESHOLD = 70;   // only snap if noticeably off-center
+
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    const cards = [...track.children];
+                    const { left, width } = track.getBoundingClientRect();
+                    const mid = left + width / 2;
+                    let closest = null, closestDist = Infinity;
+
+                    for (const card of cards) {
+                        const rect = card.getBoundingClientRect();
+                        const center = rect.left + rect.width / 2;
+                        const dist = Math.abs(center - mid);
+                        if (dist < closestDist) { closestDist = dist; closest = card; }
+                    }
+
+                    // Only snap if you're far enough from center; otherwise don't fight the user
+                    if (closest && closestDist > SNAP_THRESHOLD) {
+                        closest.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    }
+                }, SNAP_DELAY);
+            });
+        })();
+    </script>
+
+
+</body>
+
+</html>
