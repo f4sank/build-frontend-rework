@@ -82,7 +82,7 @@ body {
     backdrop-filter: saturate(140%) blur(10px);
     background: var(--panel);
     border: 1px solid var(--ring);
-    border-radius: 16px;
+    border-radius: 50px;
     box-shadow: var(--shadow);
 }
 
@@ -551,7 +551,7 @@ body {
 }
 
 .theme-evergreen {
-    background-image: url("bgs/evergreen2.jpg");
+    background-image: url("bgs/evergreen.jpg");
 }
 
 /* subtle hover effect */
@@ -709,7 +709,7 @@ body {
 
 /* Evergreen */
 :root[data-theme="evergreen"] {
-    --bg-image: url("/bgs/evergreen2.jpg");
+    --bg-image: url("/bgs/evergreen3.jpg");
     --panel: rgba(16, 28, 22, 0.58);
     --accent: #7fb08a;
     --accent-hover: #9dd0a8;
@@ -788,4 +788,147 @@ body.sidebar-open .home-btn {
 
 .home-btn.magic {
     animation: homePulse 0.9s ease-out;
+}
+
+
+/* ==========================================================
+   🌞 LIGHT MODE (toggle via .light-mode on <html>)
+   ========================================================== */
+:root.light-mode {
+    --panel: rgba(255, 255, 255, 0.68);
+    --text: #181b23;
+    /* darker main text */
+    --muted: #3c4552;
+    /* deeper muted text for better readability */
+    --ring: rgba(0, 0, 0, 0.12);
+    --accent: #7a5c1e;
+    /* bronze-gold accent */
+    --accent-hover: #8f6f29;
+}
+
+
+/* same background image, just brighter in light mode */
+.light-mode .bg {
+    filter: blur(var(--bg-blur)) brightness(1.15) saturate(1.05);
+}
+
+/* glass panels + UI surfaces */
+.light-mode .nav,
+.light-mode .panel,
+.light-mode .subpanel,
+.light-mode .sidebar,
+.light-mode .theme-selector,
+.light-mode .transcription-panel {
+    background: var(--panel);
+    border: 1px solid var(--ring);
+}
+
+/* sidebar border tone for light mode */
+.light-mode .sidebar {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px) saturate(130%);
+}
+
+/* links */
+.light-mode .links a {
+    color: var(--text);
+}
+
+.light-mode .links a:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #111;
+}
+
+/* brand + headings */
+.light-mode .brand {
+    color: #7a5c1e;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode .theme-text h4 {
+    color: #4b3a15;
+}
+
+/* ghost buttons */
+.light-mode .btn.ghost {
+    color: #111;
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.light-mode .btn.ghost:hover {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+/* solid buttons use the darkened gold */
+.light-mode .btn.solid {
+    background: linear-gradient(180deg, var(--accent), #5e4813);
+    color: #fff;
+}
+
+.light-mode .btn.solid:hover {
+    background: linear-gradient(180deg, var(--accent-hover), var(--accent));
+}
+
+/* transcription buttons */
+.light-mode .transcription-btn {
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: #1f2430;
+}
+
+.light-mode .transcription-btn:hover {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+/* theme selector + list cards */
+.light-mode .theme-item {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .theme-item:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* exit link (red) */
+.light-mode .exit-link {
+    color: #b91c1c;
+}
+
+.light-mode .exit-link:hover {
+    color: #ef4444;
+}
+
+/* tooltip style (if you added tooltips) */
+.light-mode [data-tip]::after {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1f2430;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* torchlight overlay slightly reduced for brightness */
+.light-mode .light-overlay {
+    opacity: 0.9;
+}
+
+/* ===== Improve paragraph + muted text contrast in light mode ===== */
+.light-mode p,
+.light-mode .theme-text p,
+.light-mode .sidebar-content p,
+.light-mode .muted,
+.light-mode .links a,
+.light-mode li a {
+    color: #2c323c;
+    /* darker slate-gray text */
+}
+
+/* Optional: slightly stronger for hover and headings inside sidebar */
+.light-mode .sidebar-content h4,
+.light-mode .theme-text h4 {
+    color: #3a2d0f;
+    /* deep antique brown-gold tone for headers */
 }

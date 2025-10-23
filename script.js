@@ -151,3 +151,26 @@ if (homeBtn) {
         homeBtn.classList.add('magic');
     });
 }
+
+
+/* ---------------------------------
+   5) Light / Dark mode toggle
+----------------------------------*/
+const modeToggle = document.getElementById('modeToggle');
+
+function applyMode(mode) {
+    const light = mode === 'light';
+    document.documentElement.classList.toggle('light-mode', light);
+    localStorage.setItem('uiMode', light ? 'light' : 'dark');
+    if (modeToggle) modeToggle.checked = light;
+}
+
+// restore saved mode (default: dark)
+applyMode(localStorage.getItem('uiMode') || 'dark');
+
+// click handler
+if (modeToggle) {
+    modeToggle.addEventListener('change', (e) => {
+        applyMode(e.target.checked ? 'light' : 'dark');
+    });
+}
