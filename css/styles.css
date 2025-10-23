@@ -537,21 +537,25 @@ body {
     filter: brightness(0.9) saturate(1.1);
 }
 
-/* individual themes use same bg images */
+/* da sidebar theme picker tiny icons */
 .theme-default {
     background-image: url("bgs/default.png");
+    background-image: url("/assets/bgs/default.png");
 }
 
 .theme-velvet {
     background-image: url("bgs/velvet.jpg");
+    background-image: url("/assets/bgs/velvet.jpg");
 }
 
 .theme-gold {
     background-image: url("bgs/gold2.jpg");
+    background-image: url("/assets/bgs/gold2.jpg");
 }
 
 .theme-evergreen {
     background-image: url("bgs/evergreen.jpg");
+    background-image: url("/assets/bgs/evergreen.jpg");
 }
 
 /* subtle hover effect */
@@ -679,6 +683,7 @@ body {
 /* Default (current) */
 :root[data-theme="default"] {
     --bg-image: url("bgs/default.png");
+    --bg-image: url("/assets/bgs/default.png");
     --panel: rgba(18, 22, 30, 0.55);
     --accent: #c6a664;
     --accent-hover: #e0c68f;
@@ -689,6 +694,7 @@ body {
 /* Velvet */
 :root[data-theme="velvet"] {
     --bg-image: url("/bgs/velvet.jpg");
+    --bg-image: url("/assets/bgs/velvet.jpg");
     --panel: rgba(34, 18, 22, 0.58);
     --accent: #c26a6a;
     --accent-hover: #de8585;
@@ -700,6 +706,7 @@ body {
 /* Gilded Sun */
 :root[data-theme="gold"] {
     --bg-image: url("/bgs/gold2.jpg");
+    --bg-image: url("/assets/bgs/gold2.jpg");
     --panel: rgba(30, 24, 12, 0.58);
     --accent: #c6a664;
     --accent-hover: #e0c68f;
@@ -710,6 +717,7 @@ body {
 /* Evergreen */
 :root[data-theme="evergreen"] {
     --bg-image: url("/bgs/evergreen3.jpg");
+    --bg-image: url("/assets/bgs/evergreen3.jpg");
     --panel: rgba(16, 28, 22, 0.58);
     --accent: #7fb08a;
     --accent-hover: #9dd0a8;
