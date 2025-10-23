@@ -209,3 +209,26 @@ if (modeToggle) {
         })
     })
 })()
+
+
+    /* In-page smooth scroll — native, delegated */
+    ; (function () {
+        if (!document.body.classList.contains('page-index')) return
+
+        document.addEventListener('click', (e) => {
+            const a = e.target.closest('a[href^="#"]')
+            if (!a) return
+
+            const hash = a.getAttribute('href')
+            if (!hash || hash === '#') return
+
+            const target = document.querySelector(hash)
+            if (!target) return // let browser do its thing
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+            e.preventDefault()
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            history.pushState(null, '', hash)
+        }, { capture: true })
+    })()
